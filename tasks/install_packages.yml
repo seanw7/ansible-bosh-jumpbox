@@ -1,0 +1,15 @@
+---
+- name: Install system packages
+  ignore_errors: yes
+  become: yes
+  yum: name={{ item }} state=present update_cache=yes
+  with_items: [
+    coreutils-libs, git, mercurial, lsof, strace, tcpdump,
+    zip, unzip, bison, libxml2, libxml2-devel, libxslt1-devel,
+    libsqlite3-devel, rsync, libbz2-devel, cmake, uuid-devel, libmysqlclient-devel,
+    libgcrypt-devel, ca-certificates, zlib1g, zlib1g-devel,
+    readline-common, curl, wget, libpq-devel, python-psycopg2,
+    bzr, autoconf, build-essential, libyaml-devel, libncurses5-devel,
+    libffi-devel, libgdbm3, libgdbm-devel, ruby-devel,
+    tmux, vim, jq, nodejs, npm
+  ]

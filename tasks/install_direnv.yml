@@ -1,0 +1,4 @@
+---
+- name: Add direnv load to .bashrc
+  shell: "echo 'eval $(direnv hook bash)' >> /home/centos/.bashrc"
+  become: true

@@ -1,0 +1,47 @@
+---
+galaxy_info:
+#  author: "Alexander Lomov" #Original Author
+  author: seanw7
+  description: "Ansible role for BOSH and Cloud Foundry jumpbox"
+#  company: "Altoros"
+  license: "license (GPLv2, CC-BY, etc)"
+  min_ansible_version: 2
+  platforms:
+    - name: "CentOS"
+      versions:
+       - all
+  categories:
+    - cloud
+    - cloudfoundry
+    - clustering
+
+dependencies:
+#- role: shrikeh.curl
+- role: seanw7.curl
+  become: yes
+  tags: curl
+
+#- role: rvm_io.ruby
+- role: seanw7.ruby
+  become: yes
+  tags: ruby
+  rvm1_install_flags: '--auto-dotfiles --user-install'
+  rvm1_install_path: '/home/{{ ansible_ssh_user }}/.rvm'
+  # because of this issue: https://github.com/rvm/rvm1-ansible/issues/31
+  rvm1_gpg_key_server: hkp://pgp.mit.edu
+  # using root is the only option to install rvm at this moment:
+  # see for details: https://github.com/rvm/rvm1-ansible/issues/113
+  rvm1_user: "root"
+  rvm1_rvm_version: stable
+  rvm1_rubies:
+  - "ruby-{{ruby_version}}"
+
+#- role: azavea.golang
+- role: seanw7.golang
+  become: yes
+  tags: golang
+  golang_path: "/home/{{ ansible_ssh_user }}/go"
+  golang_arch: "{{ arch }}"
+#  # because of this issue: https://github.com/azavea/ansible-pip/issues/3
+  pip_version: "8.1.*"
+  python_version: "2.7.*"
