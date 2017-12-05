@@ -7,9 +7,9 @@ galaxy_info:
   license: "license (GPLv2, CC-BY, etc)"
   min_ansible_version: 2
   platforms:
-    - name: "CentOS"
+    - name: EL
       versions:
-       - all
+       - 7
   categories:
     - cloud
     - cloudfoundry
@@ -17,12 +17,12 @@ galaxy_info:
 
 dependencies:
 #- role: shrikeh.curl
-- role: seanw7.curl
+- role: shrikeh.curl
   become: yes
   tags: curl
 
-#- role: rvm_io.ruby
-- role: seanw7.ruby
+- role: rvm_io.ruby
+#- role: seanw7.ruby
   become: yes
   tags: ruby
   rvm1_install_flags: '--auto-dotfiles --user-install'
