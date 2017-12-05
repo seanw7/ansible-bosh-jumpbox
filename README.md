@@ -20,8 +20,7 @@ Resulting machine contains all needed software to manage BOSH and CF. This proej
 Install Ansible `2.2+`, you can use [this](http://docs.ansible.com/ansible/intro_installation.html) instruction or install ansible using `pip` (the following example installs Ansible to fresh Ubuntu 16.04):
 
 ```
-sudo apt-get update
-sudo apt-get install python-pip python-dev libffi-dev libssl-dev -y
+sudo yum update
 sudo pip install ansible
 ```
 
@@ -30,7 +29,7 @@ sudo pip install ansible
 You will need to install the role, create 2 files and run one command:
 
 ```bash
-ansible-galaxy install allomov.bosh-jumpbox
+ansible-galaxy install seanw7.bosh-jumpbox
 
 cat <<EOF > playbook.yml
 ---
